@@ -109,3 +109,16 @@ const title = response.potentiallyMaliciousInput;
 const element7 = <h1>{title}</h1>;
     
 root.render(element7);
+
+
+// ticking clock
+function tick() {
+    const element = (
+        <div className="clock"> 
+            <h2>{new Date().toLocaleTimeString()}</h2>
+        </div>
+    );
+    root.render(element);
+}
+
+setInterval(tick,1000)
