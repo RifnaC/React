@@ -121,4 +121,134 @@ function tick() {
     root.render(element);
 }
 
-setInterval(tick,1000)
+setInterval(tick,1000);
+
+
+// functional component 
+const FunctionalComponent = () =>{
+    return <h1>Hello, React</h1>
+}
+
+const FunctionalComponent2 = () =>(<h1>Hello, React2</h1>);
+root.render(<FunctionalComponent />)
+
+// component  composition
+const FunctionalComponent1 = () =>( <h1 className="heading">Hello, React</h1>)
+
+
+const FunctionalComponent3 = () =>( 
+   <div>
+        <FunctionalComponent1 />
+        <h2>Hello, React2</h2>
+    </div>
+   
+);
+
+root.render(<FunctionalComponent3 />)
+
+// composing components
+function Welcome(props){
+    return <h1>Hello, {props.name}</h1>
+}
+
+function Greet(){
+    return <div>
+        <Welcome name="Rifna"/>
+        <Welcome name="Fahad"/>
+        <Welcome name="Sara"/>
+        <Welcome name="Nadia"/>
+    </div>
+}
+root.render(<Greet  />);
+
+
+// component  using elment
+const elemen =( <h1 className="heading">Hello, React!!!!!!!</h1>)
+
+
+const Component2 = () =>( 
+   <div>
+        {elemen}
+        <h2>Hello, React2</h2>
+    </div>
+   
+);
+root.render(<Component2 />)
+
+
+
+// ways calling component inside another component 
+const Title =()=>( <h1 className="heading">Hello, React!!!!!!!</h1>)
+
+
+const Comp = () =>( 
+   <div>
+        <Title /> == <Title></Title>  == {Title()}
+        <h2>Hello, React2</h2>
+    </div>
+   
+);
+
+root.render(<Comp />);
+
+// function component
+function Welcome(props){
+    return <h1>Hello, {props.name}</h1>
+}
+root.render(<Welcome  />);
+
+// class component
+class Wel extends React.Component{
+    render(){
+        return <h1>Hello, {this.props.name}</h1>
+    }
+}
+
+root.render(<Wel name="Rifna" />);
+
+
+// Extracting Components
+function formatDate(date) {
+    return date.toLocaleDateString();
+ }
+ 
+const Avatar =(props) =>(<img className="avatar" src={props.author.avartarUrl} alt={props.author.name}/>);
+const UserInfo = (props) => (
+    <div className="userInfo">
+        <Avatar author={props.author} />
+        <div className="userInfo-name">
+        {props.author.name}
+        </div>
+    </div>
+);
+function Comment(props) {return  <div className="comment">
+    <UserInfo author={props.author} />
+    <div className="comment-text">
+        {props.text}
+    </div>
+    <div className="comment-date">
+    {formatDate(props.date)}
+    </div>
+</div>
+};
+
+const obj ={
+    author:{
+        name:"Rifna",
+        avartarUrl:"https://pics.com/1"
+    },
+    text:"Hello, Let's learn React Guysss", 
+    date:new Date(),
+}
+
+root.render(<Comment author={obj.author}  date={obj.date} text={obj.text} />)
+
+// pure function
+function sum(a,b){
+    return a + b;
+}
+
+// impure function
+function impureSum(a,b){
+    return a += b;
+}
