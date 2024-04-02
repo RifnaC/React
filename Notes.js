@@ -252,3 +252,26 @@ function sum(a,b){
 function impureSum(a,b){
     return a += b;
 }
+
+// props and propTypes
+import PropTypes from 'prop-types';
+
+export const Sample = (props) => (<div className="student">
+    <div style={{border:" 1px solid", padding:"0px 80px", margin:"8px 16px"}}>
+        <h3>Name: {props.name}</h3>
+        <p>Age: {props.age}</p>
+        <p>isSingle: {props.isSingle ? "Yes": "No"}</p>
+    </div>
+</div>);
+
+Sample.propTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number,
+    isSingle: PropTypes.bool,
+
+}
+Sample.defaultProps = {
+    name: "Student",
+    age:0,
+}
+
